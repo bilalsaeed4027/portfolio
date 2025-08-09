@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bilal Saeed - Portfolio</title>
+        <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        background: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 100%);
+        color: #e0e0e0;
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      /* Header */
+      header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(20, 20, 20, 0.95);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        padding: 1rem 0;
+        transition: all 0.3s ease;
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #00d4ff;
+        text-decoration: none;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+      }
+
+      .nav-links a {
+        color: #e0e0e0;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        position: relative;
+      }
+
+      .nav-links a:hover {
+        color: #00d4ff;
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: #00d4ff;
+        transition: width 0.3s ease;
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      /* Banner Section */
+      .banner {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .banner::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="%2300d4ff" opacity="0.1"/></svg>');
+        animation: float 20s infinite linear;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(0px) rotate(0deg);
+        }
+        100% {
+          transform: translateY(-100px) rotate(360deg);
+        }
+      }
+
+      .banner-content {
+        z-index: 2;
+        position: relative;
+      }
+
+      .banner h1 {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+        background: linear-gradient(135deg, #00d4ff, #0099cc);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: glow 2s ease-in-out infinite alternate;
+      }
+
+      @keyframes glow {
+        from {
+          text-shadow: 0 0 20px #00d4ff;
+        }
+        to {
+          text-shadow: 0 0 30px #00d4ff, 0 0 40px #00d4ff;
+        }
+      }
+
+      .banner p {
+        font-size: 1.2rem;
+        color: #b0b0b0;
+        margin-bottom: 2rem;
+      }
+
+      .cta-button {
+        background: linear-gradient(135deg, #00d4ff, #0099cc);
+        color: white;
+        padding: 1rem 2rem;
+        border: none;
+        border-radius: 50px;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      .cta-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 212, 255, 0.3);
+      }
+
+      /* Section Styles */
+      .section {
+        padding: 5rem 0;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding-left: 2rem;
+        padding-right: 2rem;
+      }
+
+      .section h2 {
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+        text-align: center;
+        color: #00d4ff;
+      }
+
+      /* Skills Section */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .skill-card {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 2rem;
+        border-radius: 15px;
+        border: 1px solid rgba(0, 212, 255, 0.2);
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+      }
+
+      .skill-card:hover {
+        transform: translateY(-5px);
+        border-color: #00d4ff;
+        box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+      }
+
+      .skill-card h3 {
+        color: #00d4ff;
+        margin-bottom: 1rem;
+      }
+
+      .skill-bar {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        height: 10px;
+        margin: 1rem 0;
+        overflow: hidden;
+      }
+
+      .skill-progress {
+        height: 100%;
+        background: linear-gradient(90deg, #00d4ff, #0099cc);
+        border-radius: 10px;
+        transition: width 1s ease;
+      }
+
+      /* Work Experience */
+      .timeline {
+        position: relative;
+        margin: 2rem 0;
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: linear-gradient(to bottom, #00d4ff, #0099cc);
+        transform: translateX(-50%);
+      }
+
+      .timeline-item {
+        position: relative;
+        margin-bottom: 3rem;
+        width: 45%;
+      }
+
+      .timeline-item:nth-child(odd) {
+        left: 0;
+      }
+
+      .timeline-item:nth-child(even) {
+        left: 55%;
+      }
+
+      .timeline-content {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 2rem;
+        border-radius: 15px;
+        border: 1px solid rgba(0, 212, 255, 0.2);
+        backdrop-filter: blur(10px);
+      }
+
+      .timeline-content h3 {
+        color: #00d4ff;
+        margin-bottom: 0.5rem;
+      }
+
+      .timeline-content .company {
+        color: #00d4ff;
+        font-weight: bold;
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .timeline-content .date {
+        color: #888;
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+      }
+
+      /* Education & Certification */
+      .card-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .card {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 2rem;
+        border-radius: 15px;
+        border: 1px solid rgba(0, 212, 255, 0.2);
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        border-color: #00d4ff;
+        box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+      }
+
+      .card h3 {
+        color: #00d4ff;
+        margin-bottom: 1rem;
+      }
+
+      .card .institution {
+        color: #888;
+        font-size: 0.9rem;
+      }
+
+      /* Project Cards */
+      .project-card {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .tech-stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin: 1rem 0;
+      }
+
+      .tech-tag {
+        background: rgba(0, 212, 255, 0.2);
+        color: #00d4ff;
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        border: 1px solid rgba(0, 212, 255, 0.3);
+      }
+
+      .project-link {
+        color: #00d4ff;
+        text-decoration: none;
+        font-weight: bold;
+        display: inline-block;
+        margin-top: 1rem;
+        padding: 0.5rem 1rem;
+        border: 2px solid #00d4ff;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+      }
+
+      .project-link:hover {
+        background: #00d4ff;
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
+      }
+
+      /* Let's Connect */
+      .connect {
+        background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        text-align: center;
+        padding: 5rem 0;
+      }
+
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .social-link {
+        width: 60px;
+        height: 60px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #00d4ff;
+        text-decoration: none;
+        font-size: 1.5rem;
+        transition: all 0.3s ease;
+        border: 2px solid rgba(0, 212, 255, 0.2);
+      }
+
+      .social-link:hover {
+        background: #00d4ff;
+        color: white;
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 212, 255, 0.3);
+      }
+
+      /* Mobile Responsive */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+
+        .banner h1 {
+          font-size: 2.5rem;
+        }
+
+        .timeline::before {
+          left: 20px;
+        }
+
+        .timeline-item {
+          width: calc(100% - 60px);
+          left: 60px !important;
+        }
+
+        .social-links {
+          flex-wrap: wrap;
+        }
+      }
+
+      /* Animations */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s ease;
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .typing {
+        overflow: hidden;
+        border-right: 3px solid #00d4ff;
+        white-space: nowrap;
+        animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+      }
+
+      @keyframes typing {
+        from {
+          width: 0;
+        }
+        to {
+          width: 100%;
+        }
+      }
+
+      @keyframes blink-caret {
+        from,
+        to {
+          border-color: transparent;
+        }
+        50% {
+          border-color: #00d4ff;
+        }
+      }
+
+      .banner-summary {
+        color: #b0eaff;
+        margin: 0 auto 1.5rem auto;
+        font-size: 1.15rem;
+        max-width: 600px;
+        text-align: center;
+        display: block;
+      }
+      /* Project Cards */
+.project-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.tech-tag {
+  background: rgba(0, 212, 255, 0.2);
+  color: #00d4ff;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  border: 1px solid rgba(0, 212, 255, 0.3);
+}
+
+.project-link {
+  color: #00d4ff;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  border: 2px solid #00d4ff;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+}
+
+.project-link:hover {
+  background: #00d4ff;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
+}
+/* Project Details Section */
+.project-details {
+  padding: 5rem 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.project-details h1 {
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  text-align: center;
+  color: #00d4ff;
+}
+
+.analytics-images {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.image-container {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  border-radius: 15px;
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.image-container:hover {
+  transform: translateY(-5px);
+  border-color: #00d4ff;
+  box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+}
+
+.image-container img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.image-container p {
+  color: #b0b0b0;
+  font-size: 1rem;
+  text-align: center;
+}
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <nav>
+        <a href="#" class="logo">Bilal Saeed</a>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#Achievements">Achievements</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#certifications">Certifications</a></li>
+              <li><a href="#projects">Projects</a></li>
+          <li><a href="#connect">Connect</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Banner Section -->
+    <section id="home" class="banner">
+      <div class="banner-content">
+        <h1>Bilal Saeed</h1>
+        <p class="typing">
+          Digital Marketer | Paid Ads Expert | SMM & SEM Marketing
+        </p>
+        <p class="banner-summary">
+            I'm a Digital Marketer with 2 years of experience helping brands grow online. I started as a Social Media Marketing Intern at 
+            ASTA Business and later became their Social Media Manager, leading campaigns and analyzing performance. I’ve driven e-commerce 
+            sales for brands like Gleam Collections through Facebook and Instagram ads, and generated B2B leads on LinkedIn and Reddit for 
+            clients like Jeff’s Recruiting Firm. I'm passionate about growth, data-driven strategy, and continuous learning.
+        </p>
+        <a href="#connect" class="cta-button">Let's Connect</a>
+      </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="section">
+  <h2 class="fade-in">Achievements</h2>
+  <div class="card-grid">
+
+    <div class="card fade-in project-card">
+      <h3>Boosted LinkedIn Visibility by 30%</h3>
+      <p>
+        Revamped profiles with audience-focused content and optimized sections, leading to a 30% increase in reach and engagement.
+      </p>
+    </div>
+
+    <div class="card fade-in project-card">
+      <h3>Increased E-commerce Conversions by 20%</h3>
+      <p>
+        Improved SEO, streamlined product pages, and optimized checkout flow, resulting in a 20% boost in conversions.
+      </p>
+    </div>
+
+    <div class="card fade-in project-card">
+      <h3>Enhanced Shopify Store Performance by 25%</h3>
+      <p>
+        Applied SEO and UX improvements to drive a 25% increase in conversion rates and user satisfaction.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- Skills Section -->
+<section id="skills" class="section">
+  <h2 class="fade-in">Skills</h2>
+  <div class="skills-grid">
+
+    <div class="skill-card fade-in">
+      <h3>Advertising & Paid Media</h3>
+      <p><strong>Platforms:</strong> Meta Ads, Google Ads, TikTok, Snapchat</p>
+      <p><strong>Skills:</strong> Remarketing, Lookalike Audiences, Campaign Budget Optimization (CBO)</p>
+      <div class="skill-bar"><div class="skill-progress" data-width="95"></div></div>
+    </div>
+
+    <div class="skill-card fade-in">
+      <h3>Social Media Marketing</h3>
+      <p><strong>Skills:</strong> Strategy & Planning, Instagram Growth, LinkedIn Personal Branding</p>
+      <p><strong>Tools:</strong> Content Calendars, Influencer Outreach</p>
+      <div class="skill-bar"><div class="skill-progress" data-width="92"></div></div>
+    </div>
+
+    <div class="skill-card fade-in">
+      <h3>SEO & Web Analytics</h3>
+      <p><strong>Focus:</strong> On-Page & Off-Page SEO, Keyword Research, Technical SEO</p>
+      <p><strong>Tools:</strong> Google Analytics, Google Search Console</p>
+      <div class="skill-bar"><div class="skill-progress" data-width="90"></div></div>
+    </div>
+
+    <div class="skill-card fade-in">
+      <h3>Email & SMS Marketing</h3>
+      <p><strong>Tools:</strong> Mailchimp, Brevo, Klaviyo</p>
+      <p><strong>Skills:</strong> Automation Funnels, Lead Nurturing, A/B Testing</p>
+      <div class="skill-bar"><div class="skill-progress" data-width="88"></div></div>
+    </div>
+
+    <div class="skill-card fade-in">
+      <h3>E-Commerce & CRO</h3>
+      <p><strong>Platforms:</strong> Shopify, WooCommerce, WordPress</p>
+      <p><strong>Skills:</strong> Product Page Optimization, Cart Recovery, UTM Tracking</p>
+      <div class="skill-bar"><div class="skill-progress" data-width="90"></div></div>
+    </div>
+
+    <div class="skill-card fade-in">
+      <h3>Tools & Platforms</h3>
+      <p><strong>Ad Tools:</strong> Meta Business Suite, Ads Manager</p>
+      <p><strong>Content Tools:</strong> Canva, CapCut, Photoshop (Basics)</p>
+      <p><strong>Others:</strong> Buffer, Hootsuite, Notion, ChatGPT</p>
+      <div class="skill-bar"><div class="skill-progress" data-width="87"></div></div>
+    </div>
+
+    <div class="skill-card fade-in">
+      <h3>Strategy & Analytics</h3>
+      <p><strong>Skills:</strong> Funnel Design, KPI Tracking, Trend Analysis</p>
+      <p><strong>Outputs:</strong> Performance Reports, Competitive Research</p>
+      <div class="skill-bar"><div class="skill-progress" data-width="91"></div></div>
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- Work Experience -->
+<section id="experience" class="section">
+  <h2 class="fade-in">Work Experience</h2>
+  <div class="timeline">
+
+    <div class="timeline-item fade-in">
+      <div class="timeline-content">
+        <h3>Social Media Manager</h3>
+        <div class="company">Gleam Collections</div>
+        <div class="date">Dec 2024 - Present | Hybrid - Lahore, Pakistan</div>
+        <p>• Created and managed Facebook, Instagram, and TikTok ad campaigns to drive sales and engagement.</p>
+        <p>• Built a loyal community and improved ROI through targeted content and analytics-driven optimization.</p>
+        <p>• Consistently improved ad performance by A/B testing and strategic refinements.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item fade-in">
+      <div class="timeline-content">
+        <h3>Social Media Manager</h3>
+        <div class="company">ASTA Business</div>
+        <div class="date">Apr 2024 - Jul 2024 | Remote</div>
+        <p>• Led end-to-end social media campaigns across Facebook, Instagram, and LinkedIn.</p>
+        <p>• Increased engagement by 40% and improved ROI by 30% through optimized content and workflows.</p>
+        <p>• Worked directly with clients to align campaigns with business goals and KPIs.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item fade-in">
+      <div class="timeline-content">
+        <h3>Social Media Marketing Intern</h3>
+        <div class="company">ASTA Business</div>
+        <div class="date">Dec 2023 - Apr 2024 | Remote - Dallas, TX, USA</div>
+        <p>• Supported content creation and strategy for Facebook, Instagram, and LinkedIn.</p>
+        <p>• Helped onboard 3 new clients, improved engagement by 20%, and optimized team workflows.</p>
+        <p>• Gained practical experience in campaign planning, content writing, and analytics.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item fade-in">
+      <div class="timeline-content">
+        <h3>Shopify Virtual Assistant</h3>
+        <div class="company">Generation X Enterprises</div>
+        <div class="date">Feb 2024 - Jul 2024 | Remote - Orlando, FL, USA</div>
+        <p>• Managed Shopify store operations, including SEO-optimized listings and inventory control.</p>
+        <p>• Improved user experience and increased conversions by 20% and organic traffic by 30%.</p>
+        <p>• Ensured seamless day-to-day performance of the online store.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+    <!-- Education -->
+    <section id="education" class="section">
+  <h2 class="fade-in">Education</h2>
+  <div class="card-grid">
+
+    <div class="card fade-in">
+      <h3>04/2016 - 08/2020<br>Matriculation</h3>
+      <p>
+        Moon Public Schools<br>
+        Completed secondary education with a focus on foundational science and mathematics subjects.
+        Developed basic analytical skills and discipline for higher studies.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+
+    <!-- Certifications -->
+<section id="certifications" class="section">
+  <h2 class="fade-in">Certifications</h2>
+  <div class="card-grid">
+
+    <div class="card fade-in">
+      <h3>Digital Marketing</h3>
+      <p class="institution">DigiSkills.pk</p>
+      <p>
+        Covered fundamentals of digital marketing including content creation, audience targeting, campaign strategy, and social media optimization.
+      </p>
+    </div>
+
+    <div class="card fade-in">
+      <h3>SEO (Search Engine Optimization)</h3>
+      <p class="institution">DigiSkills.pk</p>
+      <p>
+        Learned on-page and off-page SEO, keyword research, backlinking strategies, and performance tracking tools for search engine ranking.
+      </p>
+    </div>
+
+    <div class="card fade-in">
+      <h3>Facebook Ads</h3>
+      <p class="institution">Harvard University</p>
+      <p>
+        Gained practical skills in Facebook ad creation, targeting, budgeting, and performance analysis for both e-commerce and B2B sectors.
+      </p>
+    </div>
+
+    <div class="card fade-in">
+      <h3>Google Analytics</h3>
+      <p class="institution">Skillshop</p>
+      <p>
+        Mastered Google Analytics setup, data interpretation, event tracking, and user behavior analysis to drive data-informed marketing strategies.
+      </p>
+    </div>
+
+    <div class="card fade-in">
+      <h3>Google AI-Powered Shopping Ads</h3>
+      <p class="institution">Skillshop</p>
+      <p>
+        Learned how to leverage Google's AI to optimize product visibility, automate bidding, and increase conversions in Google Shopping campaigns.
+      </p>
+    </div>
+
+    <div class="card fade-in">
+      <h3>Mailchimp Landing Page</h3>
+      <p class="institution">Skillshop</p>
+      <p>
+        Gained experience in building and customizing landing pages in Mailchimp for lead generation, promotions, and email list growth.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Projects Section -->
+<section id="projects" class="section">
+  <h2 class="fade-in">Projects</h2>
+  <div class="card-grid">
+    <div class="card fade-in project-card">
+      <h3>Social Media Optimization Of Master Networking</h3>
+      <p>
+       Elevated Master Networking’s digital presence through strategic social media optimization—visuals, refining content strategy, and driving higher engagement to strengthen brand identity and reach.
+      </p>
+      <div class="tech-stack">
+        <span class="tech-tag">Facebook Ads</span>
+        <span class="tech-tag">Instagram</span>
+        <span class="tech-tag">LinkedIn</span>
+      </div>
+      <a href="project1.html" class="project-link">View Project</a>
+    </div>
+
+    <div class="card fade-in project-card">
+      <h3>Master Class Of Passive E-Commerce</h3>
+      <p>
+Promoted and managed ticket sales for the Master Class of Passive E-Commerce, driving audience interest through effective marketing strategies and streamlined booking processes.      </p>
+      <div class="tech-stack">
+        <span class="tech-tag">LinkedIn Ads</span>
+        <span class="tech-tag">Facebook Ads</span>
+        <span class="tech-tag">Content Marketing</span>
+        <span class="tech-tag">Lead Generation</span>
+      </div>
+       <a href="project2.html" class="project-link">View Project</a>
+    </div>
+
+    <div class="card fade-in project-card">
+      <h3>Asta Buisness SMM</h3>
+      <p>
+Executed multi-platform digital marketing campaigns for Asta Business, leveraging Facebook, Instagram, LinkedIn, and search engine marketing to boost brand awareness, generate leads, and maximize online reach.      </p>
+      <div class="tech-stack">
+        <span class="tech-tag">Facebook Marketing</span>
+        <span class="tech-tag">Instagram Marketing</span>
+        <span class="tech-tag">LinkedIn Marketing</span>
+        <span class="tech-tag">Search Engine Marketing</span>
+      </div>
+ <a href="project3.html" class="project-link">View Project</a>
+    </div>
+  </div>
+</section>
+
+    <!-- Let's Connect -->
+    <section id="connect" class="connect">
+      <div class="section">
+        <h2 class="fade-in">Let's Connect</h2>
+        <p class="fade-in">
+          Ready to work together? Let's create something amazing!
+        </p>
+        <div class="social-links">
+          <a
+            href="mailto:m.bilalsaeed192@gmail.com"
+            class="social-link fade-in"
+            title="Email"
+            >📧</a
+          >
+          <a href="tel:+923268503490" class="social-link fade-in" title="Phone"
+            >📱</a
+          >
+          <a href="#" class="social-link fade-in" title="Location">📍</a>
+        </div>
+        <div style="margin-top: 2rem; color: #00d4ff; font-size: 1.1rem">
+          <div>Email: m.bilalsaeed192@gmail.com</div>
+          <div>Phone: +923268503490</div>
+          <div>Location: Lahore Pakistan, 54000</div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+          });
+        });
+      });
+
+      // Fade in animation on scroll
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll(".fade-in").forEach((el) => {
+        observer.observe(el);
+      });
+
+      // Skill bar animation
+      const skillObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const progressBar = entry.target.querySelector(".skill-progress");
+            if (progressBar) {
+              const width = progressBar.getAttribute("data-width");
+              setTimeout(() => {
+                progressBar.style.width = width + "%";
+              }, 300);
+            }
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll(".skill-card").forEach((card) => {
+        skillObserver.observe(card);
+      });
+
+      // Header background change on scroll
+      window.addEventListener("scroll", () => {
+        const header = document.querySelector("header");
+        if (window.scrollY > 100) {
+          header.style.background = "rgba(20, 20, 20, 0.98)";
+        } else {
+          header.style.background = "rgba(20, 20, 20, 0.95)";
+        }
+      });
+
+      // Typing effect
+      const typingElement = document.querySelector(".typing");
+      const text = "Digital Marketer | Paid Ads Expert | SMM & SEM Marketing";
+      let index = 0;
+
+      function typeText() {
+        if (index < text.length) {
+          typingElement.textContent += text.charAt(index);
+          index++;
+          setTimeout(typeText, 100);
+        }
+      }
+
+      // Start typing effect after page load
+      window.addEventListener("load", () => {
+        typingElement.textContent = "";
+        setTimeout(typeText, 1000);
+      });
+
+      // Particle effect for banner
+      function createParticle() {
+        const particle = document.createElement("div");
+        particle.style.position = "absolute";
+        particle.style.width = "4px";
+        particle.style.height = "4px";
+        particle.style.background = "#00d4ff";
+        particle.style.borderRadius = "50%";
+        particle.style.opacity = "0.5";
+        particle.style.left = Math.random() * 100 + "%";
+        particle.style.top = "100%";
+        particle.style.pointerEvents = "none";
+
+        document.querySelector(".banner").appendChild(particle);
+
+        let position = 100;
+        const animation = setInterval(() => {
+          position -= 0.5;
+          particle.style.top = position + "%";
+
+          if (position < -10) {
+            clearInterval(animation);
+            particle.remove();
+          }
+        }, 16);
+      }
+
+      // Create particles periodically
+      setInterval(createParticle, 2000);
+
+      // Mobile menu toggle (for future enhancement)
+      const createMobileMenu = () => {
+        const nav = document.querySelector("nav");
+        const menuToggle = document.createElement("button");
+        menuToggle.innerHTML = "☰";
+        menuToggle.className = "mobile-menu-toggle";
+        menuToggle.style.display = "none";
+        menuToggle.style.background = "none";
+        menuToggle.style.border = "none";
+        menuToggle.style.color = "#00d4ff";
+        menuToggle.style.fontSize = "1.5rem";
+        menuToggle.style.cursor = "pointer";
+
+        nav.appendChild(menuToggle);
+
+        // Show/hide mobile menu on smaller screens
+        const checkScreenSize = () => {
+          if (window.innerWidth <= 768) {
+            menuToggle.style.display = "block";
+          } else {
+            menuToggle.style.display = "none";
+          }
+        };
+
+        window.addEventListener("resize", checkScreenSize);
+        checkScreenSize();
+      };
+
+      createMobileMenu();
+    </script>
+  </body>
+</html>
